@@ -7,33 +7,33 @@ namespace SoundSonar
 {
 	GeneralMenu::GeneralMenu(GameBirdDataRef data) : _data(data)
 	{	}
-	// инициализирую заставку
+	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р·Р°СЃС‚Р°РІРєСѓ
 	void GeneralMenu::Init()
 	{
-		// размер окна и заголовок WINDOW_TITLE
+		// СЂР°Р·РјРµСЂ РѕРєРЅР° Рё Р·Р°РіРѕР»РѕРІРѕРє WINDOW_TITLE
 		sf::Window window;
-		// изменяю позицию окна (относительно рабочего стола)
+		// РёР·РјРµРЅВ¤СЋ РїРѕР·РёС†РёСЋ РѕРєРЅР° (РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ СЂР°Р±РѕС‡РµРіРѕ СЃС‚РѕР»Р°)
 		window.setPosition(sf::Vector2i(0, 50));
-		// получаю специфичный для операционной системы handle окна чтобы имлементировать вещи, 
-		// которые SFML не поддерживает
+		// РїРѕР»СѓС‡Р°СЋ СЃРїРµС†РёС„РёС‡РЅС‹Р№ РґР»В¤ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹ handle РѕРєРЅР° С‡С‚РѕР±С‹ РёРјР»РµРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РІРµС‰Рё, 
+		// РєРѕС‚РѕСЂС‹Рµ SFML РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚
 		sf::WindowHandle handle = window.getSystemHandle();
-		window.setTitle("Игра");
-		// загружаю рисунок для фона главного окна из ресурсов
+		window.setTitle("В»РіСЂР°");
+		// Р·Р°РіСЂСѓР¶Р°СЋ СЂРёСЃСѓРЅРѕРє РґР»В¤ С„РѕРЅР° РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Main Menu Background",
 			MAIN_MENU_BACKGROUND_FILEPATH);
-		// загружаю рисунок для заголовка главного окна из ресурсов
+		// Р·Р°РіСЂСѓР¶Р°СЋ СЂРёСЃСѓРЅРѕРє РґР»В¤ Р·Р°РіРѕР»РѕРІРєР° РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Game Title",
 			GAME_TITLE_FILEPATH);
-		// загружаю рисунок для кнопки "Играть" из ресурсов
+		// Р·Р°РіСЂСѓР¶Р°СЋ СЂРёСЃСѓРЅРѕРє РґР»В¤ РєРЅРѕРїРєРё "В»РіСЂР°С‚СЊ" РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Play Button",
 			PLAY_BUTTON_FILEPATH);
-		// устанавливаю данный рисунок
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ РґР°РЅРЅС‹Р№ СЂРёСЃСѓРЅРѕРє
 		_background.setTexture(this->_data->assetcontrols.GetTexture("Main Menu Background"));
-		// устанавливаю данный рисунок
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ РґР°РЅРЅС‹Р№ СЂРёСЃСѓРЅРѕРє
 		_title.setTexture(this->_data->assetcontrols.GetTexture("Game Title"));
-		// устанавливаю данный рисунок
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ РґР°РЅРЅС‹Р№ СЂРёСЃСѓРЅРѕРє
 		_playButton.setTexture(this->_data->assetcontrols.GetTexture("Play Button"));
-		// позиции на экране заголовка и кнопки
+		// РїРѕР·РёС†РёРё РЅР° СЌРєСЂР°РЅРµ Р·Р°РіРѕР»РѕРІРєР° Рё РєРЅРѕРїРєРё
 		_title.setPosition((SCREEN_WIDTH / 2) - (_title.getGlobalBounds().width / 2), 
 			_title.getGlobalBounds().height / 2);
 		_playButton.setPosition((SCREEN_WIDTH / 2) - (_playButton.getGlobalBounds().width / 2),
@@ -47,12 +47,12 @@ namespace SoundSonar
 		while (_data->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
-			{	// закрываю окно
+			{	// Р·Р°РєСЂС‹РІР°СЋ РѕРєРЅРѕ
 				_data->window.close();
 			}
-			// нажатие кнопки "Играть"
+			// РЅР°Р¶Р°С‚РёРµ РєРЅРѕРїРєРё "В»РіСЂР°С‚СЊ"
 			if (_data->input.IsSpriteClicked(_playButton, sf::Mouse::Left, _data->window))
-			{	// проверяю нажатие через консоль std::cout << "Запуск игры!" << std::endl;
+			{	// РїСЂРѕРІРµСЂВ¤СЋ РЅР°Р¶Р°С‚РёРµ С‡РµСЂРµР· РєРѕРЅСЃРѕР»СЊ std::cout << "В«Р°РїСѓСЃРє РёРіСЂС‹!" << std::endl;
 				_data->mashinegame.AddState(StateRef(new StatusGame(_data)), true);
 			}
 		}
@@ -62,15 +62,15 @@ namespace SoundSonar
 	{		}
 
 	void GeneralMenu::Draw(float dt)
-	{	// чищу окно
+	{	// С‡РёС‰Сѓ РѕРєРЅРѕ
 		_data->window.clear();
-		// рисую фон-подложку (рисунок из ресурсов)
+		// СЂРёСЃСѓСЋ С„РѕРЅ-РїРѕРґР»РѕР¶РєСѓ (СЂРёСЃСѓРЅРѕРє РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		_data->window.draw(_background);
-		// рисую заголовок (рисунок из ресурсов)
+		// СЂРёСЃСѓСЋ Р·Р°РіРѕР»РѕРІРѕРє (СЂРёСЃСѓРЅРѕРє РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		_data->window.draw(_title);
-		// рисую кнопку (рисунок из ресурсов)
+		// СЂРёСЃСѓСЋ РєРЅРѕРїРєСѓ (СЂРёСЃСѓРЅРѕРє РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		_data->window.draw(_playButton);
-		// показываю на экране
+		// РїРѕРєР°Р·С‹РІР°СЋ РЅР° СЌРєСЂР°РЅРµ
 		_data->window.display();
 	}
 }
