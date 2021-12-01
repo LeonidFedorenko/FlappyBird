@@ -6,34 +6,34 @@
 #include "vector"
 
 namespace SoundSonar
-{	// класс для препятствий
+{	// РєР»Р°СЃСЃ РґР»СЏ РїСЂРµРїСЏС‚СЃС‚РІРёР№
 	class BlockPipe
 	{
 	public:
 		BlockPipe(GameBirdDataRef data);
-		// для появлние на экране препятсвий
+		// РґР»СЏ РїРѕСЏРІР»РЅРёРµ РЅР° СЌРєСЂР°РЅРµ РїСЂРµРїСЏС‚СЃРІРёР№
 		void SpawnBottomPipesBlock();
 		void SpawnTopPipesBlock();
 		void SpawnInvisiblePipesBlock();
-		// чтобы показывать результат прохождения препятствий
+		// С‡С‚РѕР±С‹ РїРѕРєР°Р·С‹РІР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РїСЂРѕС…РѕР¶РґРµРЅРёСЏ РїСЂРµРїСЏС‚СЃС‚РІРёР№
 		void ScoringPlayerBlocks();
-		// для премещения препятсвий в окне
+		// РґР»СЏ РїСЂРµРјРµС‰РµРЅРёСЏ РїСЂРµРїСЏС‚СЃРІРёР№ РІ РѕРєРЅРµ
 		void MoveBlockPipes(float dt);
-		// прорисовка блоков
+		// РїСЂРѕСЂРёСЃРѕРІРєР° Р±Р»РѕРєРѕРІ
 		void DrawPipesBlock();
-		// метод для случайной высоты блоков по Y
+		// РјРµС‚РѕРґ РґР»СЏ СЃР»СѓС‡Р°Р№РЅРѕР№ РІС‹СЃРѕС‚С‹ Р±Р»РѕРєРѕРІ РїРѕ Y
 		void Ramdom_Y_BlockPipeOffset();
-		// для столкновений с блоками
+		// РґР»СЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№ СЃ Р±Р»РѕРєР°РјРё
 		const std::vector<sf::Sprite> &GetSprites() const;
-		// метод для подсчёта пройденых блоков
+		// РјРµС‚РѕРґ РґР»СЏ РїРѕРґСЃС‡С‘С‚Р° РїСЂРѕР№РґРµРЅС‹С… Р±Р»РѕРєРѕРІ
 		std::vector<sf::Sprite> &GetScoringPlayerBlocks();
 	private:
 		GameBirdDataRef _data;
-		// проверка - столкновения
+		// РїСЂРѕРІРµСЂРєР° - СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
 		std::vector<sf::Sprite> blockPipeSprites;
-		// проверка - прохождения очередного блока
+		// РїСЂРѕРІРµСЂРєР° - РїСЂРѕС…РѕР¶РґРµРЅРёСЏ РѕС‡РµСЂРµРґРЅРѕРіРѕ Р±Р»РѕРєР°
 		std::vector<sf::Sprite> scoringBlocks;
 		int _landHeightBlockPipe; // 
 		int _blockPipeSpawn_Y_Offset; //
 	};
-}
+} 
