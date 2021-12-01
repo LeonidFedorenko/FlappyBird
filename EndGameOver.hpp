@@ -6,7 +6,7 @@
 namespace SoundSonar
 {
 	class EndGameOver : public State
-	{	// завершение игры (gameover)
+	{	// Р·Р°РІРµСЂС€РµРЅРёРµ РёРіСЂС‹ (gameover)
 	public:
 		EndGameOver(GameBirdDataRef data, int score);
 
@@ -20,17 +20,17 @@ namespace SoundSonar
 
 	private:
 		GameBirdDataRef _data;
-		// фон для геймовера
+		// С„РѕРЅ РґР»СЏ РіРµР№РјРѕРІРµСЂР°
 		sf::Sprite _background;
-		sf::Sprite _titleGameOver; // заголовок
-		sf::Sprite _bodyScoreContainer; // результаты
-		sf::Sprite _retryPlayButton; // кнопка "Играть"
-		sf::Sprite _medalPlayer; // медаль за результат
-		// для подсчёта очков и результатов (вывод на экран)
-		sf::Text _scorePlayer; // текущий игрок     
-		sf::Text _HighScorePlayer; // лучший результат  
-		// для подсчёта очков и результатов (переменные)
-		int _score; // очки текущего игрок     
-		int _highScorePlay; // очки - лучший результат  
+		sf::Sprite _titleGameOver; // Р·Р°РіРѕР»РѕРІРѕРє
+		sf::Sprite _bodyScoreContainer; // СЂРµР·СѓР»СЊС‚Р°С‚С‹
+		sf::Sprite _retryPlayButton; // РєРЅРѕРїРєР° "РРіСЂР°С‚СЊ"
+		sf::Sprite _medalPlayer; // РјРµРґР°Р»СЊ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚
+		// РґР»СЏ РїРѕРґСЃС‡С‘С‚Р° РѕС‡РєРѕРІ Рё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ (РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ)
+		sf::Text _scorePlayer; // С‚РµРєСѓС‰РёР№ РёРіСЂРѕРє     
+		sf::Text _HighScorePlayer; // Р»СѓС‡С€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚  
+		// РґР»СЏ РїРѕРґСЃС‡С‘С‚Р° РѕС‡РєРѕРІ Рё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ (РїРµСЂРµРјРµРЅРЅС‹Рµ)
+		int _score; // РѕС‡РєРё С‚РµРєСѓС‰РµРіРѕ РёРіСЂРѕРє     
+		int _highScorePlay; // РѕС‡РєРё - Р»СѓС‡С€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚  
 	};
 }
