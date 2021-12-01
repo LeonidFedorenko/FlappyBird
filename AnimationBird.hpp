@@ -30,7 +30,7 @@ namespace SoundSonar
 		sf::Clock _movementClock;
 		// переменна¤ для текущего состо¤ни¤ птицы
 		int _birdState;
-		// дл¤ смены угла полёта птицы
+		// для смены угла полёта птицы
 		float _flightAngle;
 	};
 }
