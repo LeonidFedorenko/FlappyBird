@@ -3,51 +3,51 @@
 #include "DefiningSplashScreen.hpp"
 #include "StatusGame.hpp"
 #include <iostream>
-// для чтения/записи результата в файл (PlayerScore.dat)
+// РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ С„Р°Р№Р» (PlayerScore.dat)
 #include <fstream>
 
 namespace SoundSonar
-{	// в конце игры учёт результатов
+{	// РІ РєРѕРЅС†Рµ РёРіСЂС‹ СѓС‡С‘С‚ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
 	EndGameOver::EndGameOver(GameBirdDataRef data, int score) : _data(data), _score(score)
 	{	}
-	// инициализирую заставку
+	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р·Р°СЃС‚Р°РІРєСѓ
 	void EndGameOver::Init()
-	{	// для чтение файла результатов PlayerScore.dat
+	{	// РґР»СЏ С‡С‚РµРЅРёРµ С„Р°Р№Р»Р° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ PlayerScore.dat
 		std::ifstream readFileScore;
 		readFileScore.open("Resources/PlayerScore.dat");
-		// проверяю удалось ли прочитать файл
+		// РїСЂРѕРІРµСЂСЏСЋ СѓРґР°Р»РѕСЃСЊ Р»Рё РїСЂРѕС‡РёС‚Р°С‚СЊ С„Р°Р№Р»
 		if (readFileScore.is_open())
-		{	// пока файл не закончился
+		{	// РїРѕРєР° С„Р°Р№Р» РЅРµ Р·Р°РєРѕРЅС‡РёР»СЃСЏ
 			while (!readFileScore.eof())
-			{	// лучший результат
+			{	// Р»СѓС‡С€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚
 				readFileScore >> _highScorePlay;
 			}
 		}
-		// закрываю файл
+		// Р·Р°РєСЂС‹РІР°СЋ С„Р°Р№Р»
 		readFileScore.close();
-		// для перезаписи файла
+		// РґР»СЏ РїРµСЂРµР·Р°РїРёСЃРё С„Р°Р№Р»Р°
 		std::ofstream writeFileScore("Resources/PlayerScore.dat");
-		// если удалось открыть файл
+		// РµСЃР»Рё СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»
 		if (writeFileScore.is_open())
-		{	// если текущий результат больше имеющегося - запись нового значения
+		{	// РµСЃР»Рё С‚РµРєСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚ Р±РѕР»СЊС€Рµ РёРјРµСЋС‰РµРіРѕСЃСЏ - Р·Р°РїРёСЃСЊ РЅРѕРІРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
 			if (_score> _highScorePlay)
-			{	// меняю значение
+			{	// РјРµРЅСЏСЋ Р·РЅР°С‡РµРЅРёРµ
 				_highScorePlay = _score;
-			}	// запись в файл
+			}	// Р·Р°РїРёСЃСЊ РІ С„Р°Р№Р»
 			writeFileScore << _highScorePlay; 
 		}
-		// закрываю файл
+		// Р·Р°РєСЂС‹РІР°СЋ С„Р°Р№Р»
 		writeFileScore.close();
-		// загружаю фон геймовера из ресурсов
+		// Р·Р°РіСЂСѓР¶Р°СЋ С„РѕРЅ РіРµР№РјРѕРІРµСЂР° РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Game Over Background",
 			GAME_OVER_BACKGROUND_FILEPATH);
-		// загружаю заголовок геймовера из ресурсов
+		// Р·Р°РіСЂСѓР¶Р°СЋ Р·Р°РіРѕР»РѕРІРѕРє РіРµР№РјРѕРІРµСЂР° РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Title Game Over",
 			TITLE_GAME_OVER_FILEPATH);
-		// загружаю табло для информации из ресурсов
+		// Р·Р°РіСЂСѓР¶Р°СЋ С‚Р°Р±Р»Рѕ РґР»СЏ РёРЅС„РѕСЂРјР°С†РёРё РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Info Game Over",
 			INFO_GAME_OVER_FILEPATH);
-		// загружаю медали
+		// Р·Р°РіСЂСѓР¶Р°СЋ РјРµРґР°Р»Рё
 		_data->assetcontrols.LoadTextureImage("MedalNone",
 			MEDAL_NONE_FILEPATH);
 		_data->assetcontrols.LoadTextureImage("MedalBronze",
@@ -58,71 +58,71 @@ namespace SoundSonar
 			MEDAL_GOLD_FILEPATH);
 		_data->assetcontrols.LoadTextureImage("MedalPlatinum",
 			MEDAL_PLATINUM_FILEPATH);
-		// устанавливаю рисунок фона
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ СЂРёСЃСѓРЅРѕРє С„РѕРЅР°
 		_background.setTexture(this->_data->assetcontrols.GetTexture("Game Over Background"));
-		// устанавливаю заголовок
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ Р·Р°РіРѕР»РѕРІРѕРє
 		_titleGameOver.setTexture(this->_data->assetcontrols.GetTexture("Title Game Over"));
-		// устанавливаю рисунок для результатов
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ СЂРёСЃСѓРЅРѕРє РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
 		_bodyScoreContainer.setTexture(this->_data->assetcontrols.GetTexture("Info Game Over"));
-		// устанавливаю кнопку для игры вновь
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ РєРЅРѕРїРєСѓ РґР»СЏ РёРіСЂС‹ РІРЅРѕРІСЊ
 		_retryPlayButton.setTexture(this->_data->assetcontrols.GetTexture("Play Button"));
-		// позиция для заголовка геймовера
+		// РїРѕР·РёС†РёСЏ РґР»СЏ Р·Р°РіРѕР»РѕРІРєР° РіРµР№РјРѕРІРµСЂР°
 		_titleGameOver.setPosition((_data->window.getSize().x / 2) -
 			(_titleGameOver.getGlobalBounds().width / 2), _bodyScoreContainer.getPosition().y + 50 - 
 			(_titleGameOver.getGlobalBounds().height / 12.5));
-		// указываю позицию фона для результатов в окне
+		// СѓРєР°Р·С‹РІР°СЋ РїРѕР·РёС†РёСЋ С„РѕРЅР° РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ РѕРєРЅРµ
 		_bodyScoreContainer.setPosition((_data->window.getSize().x / 2) -
 			(_bodyScoreContainer.getGlobalBounds().width / 2), (_data->window.getSize().y / 2) -
 			(_bodyScoreContainer.getGlobalBounds().height / 2));
-		// указываю позицию для кноки переиграть
+		// СѓРєР°Р·С‹РІР°СЋ РїРѕР·РёС†РёСЋ РґР»СЏ РєРЅРѕРєРё РїРµСЂРµРёРіСЂР°С‚СЊ
 		_retryPlayButton.setPosition((_data->window.getSize().x / 2) -
 			(_retryPlayButton.getGlobalBounds().width / 2), _bodyScoreContainer.getPosition().y +
 			_bodyScoreContainer.getGlobalBounds().height + (_retryPlayButton.getGlobalBounds().height * 0.2));
-		// вывод личного результа
-		_scorePlayer.setFont(_data->assetcontrols.GetFont("Score font")); // шрифт
-		//_score.setString(std::to_string(_score)); // перевожу число в строку
+		// РІС‹РІРѕРґ Р»РёС‡РЅРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°
+		_scorePlayer.setFont(_data->assetcontrols.GetFont("Score font")); // С€СЂРёС„С‚
+		//_score.setString(std::to_string(_score)); // РїРµСЂРµРІРѕР¶Сѓ С‡РёСЃР»Рѕ РІ СЃС‚СЂРѕРєСѓ
 		_scorePlayer.setString(std::to_string(_score));
-		_scorePlayer.setCharacterSize(54); // размер шрифта
-		_scorePlayer.setFillColor(sf::Color::Magenta); // цвет шрифта
-		// позиция для результирующего значения
+		_scorePlayer.setCharacterSize(54); // СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р°
+		_scorePlayer.setFillColor(sf::Color::Magenta); // С†РІРµС‚ С€СЂРёС„С‚Р°
+		// РїРѕР·РёС†РёСЏ РґР»СЏ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ Р·РЅР°С‡РµРЅРёСЏ
 		_scorePlayer.setOrigin(_scorePlayer.getGlobalBounds().width / 2.5,
 			_scorePlayer.getGlobalBounds().height / 2);
-		// указываю позицию в окне
+		// СѓРєР°Р·С‹РІР°СЋ РїРѕР·РёС†РёСЋ РІ РѕРєРЅРµ
 		_scorePlayer.setPosition(_data->window.getSize().x / 11 * 6.85,
 			_data->window.getSize().y / 2.15);
-		// вывод лучшего результа
-		_HighScorePlayer.setFont(_data->assetcontrols.GetFont("Score font")); // шрифт
-		_HighScorePlayer.setString(std::to_string(_highScorePlay)); // перевожу число в строку
-		_HighScorePlayer.setCharacterSize(54); // размер шрифта
-		_HighScorePlayer.setFillColor(sf::Color::Red); // цвет шрифта
-		// позиция для наилучшего результата
+		// РІС‹РІРѕРґ Р»СѓС‡С€РµРіРѕ СЂРµР·СѓР»СЊС‚Р°
+		_HighScorePlayer.setFont(_data->assetcontrols.GetFont("Score font")); // С€СЂРёС„С‚
+		_HighScorePlayer.setString(std::to_string(_highScorePlay)); // РїРµСЂРµРІРѕР¶Сѓ С‡РёСЃР»Рѕ РІ СЃС‚СЂРѕРєСѓ
+		_HighScorePlayer.setCharacterSize(54); // СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р°
+		_HighScorePlayer.setFillColor(sf::Color::Red); // С†РІРµС‚ С€СЂРёС„С‚Р°
+		// РїРѕР·РёС†РёСЏ РґР»СЏ РЅР°РёР»СѓС‡С€РµРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 		_HighScorePlayer.setOrigin(_HighScorePlayer.getGlobalBounds().width / 2.5,
 			_HighScorePlayer.getGlobalBounds().height / 2);
-		// указываю позицию в окне
+		// СѓРєР°Р·С‹РІР°СЋ РїРѕР·РёС†РёСЋ РІ РѕРєРЅРµ
 		_HighScorePlayer.setPosition(_data->window.getSize().x / 11 * 6.85,
 			_data->window.getSize().y / 1.79);
-		// проверяю набранный результат (для медали)
+		// РїСЂРѕРІРµСЂСЏСЋ РЅР°Р±СЂР°РЅРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚ (РґР»СЏ РјРµРґР°Р»Рё)
 		if (_score >= SCORE_PLATINUM_MEDAL)
-		{	// загружаю соответствующий рисунок
+		{	// Р·Р°РіСЂСѓР¶Р°СЋ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ СЂРёСЃСѓРЅРѕРє
 			_medalPlayer.setTexture(_data->assetcontrols.GetTexture("MedalPlatinum"));
 		}
 		else if (_score >= SCORE_GOLD_MEDAL)
-		{	// загружаю соответствующий рисунок
+		{	// Р·Р°РіСЂСѓР¶Р°СЋ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ СЂРёСЃСѓРЅРѕРє
 			_medalPlayer.setTexture(_data->assetcontrols.GetTexture("MedalGold"));
 		}
 		else if (_score >= SCORE_SILVER_MEDAL)
-		{	// загружаю соответствующий рисунок
+		{	// Р·Р°РіСЂСѓР¶Р°СЋ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ СЂРёСЃСѓРЅРѕРє
 			_medalPlayer.setTexture(_data->assetcontrols.GetTexture("MedalSilver"));
 		}
 		else if (_score >= SCORE_BRONZE_MEDAL)
-		{	// загружаю соответствующий рисунок
+		{	// Р·Р°РіСЂСѓР¶Р°СЋ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ СЂРёСЃСѓРЅРѕРє
 			_medalPlayer.setTexture(_data->assetcontrols.GetTexture("MedalBronze"));
 		}
 		else   
-		{	// загружаю соответствующий рисунок
+		{	// Р·Р°РіСЂСѓР¶Р°СЋ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ СЂРёСЃСѓРЅРѕРє
 			_medalPlayer.setTexture(_data->assetcontrols.GetTexture("MedalNone"));
 		}
-		// устанавливаю позицию для появления медали
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ РїРѕР·РёС†РёСЋ РґР»СЏ РїРѕСЏРІР»РµРЅРёСЏ РјРµРґР°Р»Рё
 		_medalPlayer.setPosition(175, 465);
 	}
 
@@ -133,10 +133,10 @@ namespace SoundSonar
 		while (_data->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
-			{	// закрываю окно
+			{	// Р·Р°РєСЂС‹РІР°СЋ РѕРєРЅРѕ
 				_data->window.close();
 			}
-			// если левой кнопкой мыши была нажата кнопка переиграть
+			// РµСЃР»Рё Р»РµРІРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё Р±С‹Р»Р° РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° РїРµСЂРµРёРіСЂР°С‚СЊ
 			if (_data->input.IsSpriteClicked(_retryPlayButton, sf::Mouse::Left, _data->window))
 			{
 				_data->mashinegame.AddState(StateRef(new StatusGame(_data)), true);
@@ -150,20 +150,20 @@ namespace SoundSonar
 	}
 
 	void EndGameOver::Draw(float dt)
-	{	// чищу окно
+	{	// С‡РёС‰Сѓ РѕРєРЅРѕ
 		_data->window.clear();
-		// рисую подложку (рисунок из ресурсов)
+		// СЂРёСЃСѓСЋ РїРѕРґР»РѕР¶РєСѓ (СЂРёСЃСѓРЅРѕРє РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		_data->window.draw(_background);
-		// при геймовере
+		// РїСЂРё РіРµР№РјРѕРІРµСЂРµ
 		_data->window.draw(_titleGameOver);
 		_data->window.draw(_bodyScoreContainer);
-		_data->window.draw(_retryPlayButton); // кнопка переиграть
-		// вывод значений для игрока (и лучший результат)
+		_data->window.draw(_retryPlayButton); // РєРЅРѕРїРєР° РїРµСЂРµРёРіСЂР°С‚СЊ
+		// РІС‹РІРѕРґ Р·РЅР°С‡РµРЅРёР№ РґР»СЏ РёРіСЂРѕРєР° (Рё Р»СѓС‡С€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚)
 		_data->window.draw(_scorePlayer);
 		_data->window.draw(_HighScorePlayer);
-		// появление медали
+		// РїРѕСЏРІР»РµРЅРёРµ РјРµРґР°Р»Рё
 		_data->window.draw(_medalPlayer);
-		// показываю на экране
+		// РїРѕРєР°Р·С‹РІР°СЋ РЅР° СЌРєСЂР°РЅРµ
 		_data->window.display();
 	}
 }
