@@ -3,55 +3,55 @@
 namespace SoundSonar
 {
 	BlockPipe::BlockPipe(GameBirdDataRef data) : _data(data)
-	{	// для случайной высоты блоков (препятствий)
+	{	// РґР»СЏ СЃР»СѓС‡Р°Р№РЅРѕР№ РІС‹СЃРѕС‚С‹ Р±Р»РѕРєРѕРІ (РїСЂРµРїСЏС‚СЃС‚РІРёР№)
 		_landHeightBlockPipe = _data->assetcontrols.GetTexture("LandGame").getSize().y;
 		_blockPipeSpawn_Y_Offset = -250; 
 	}
 
-	// для появлние на экране препятсвий
+	// РґР»СЏ РїРѕСЏРІР»РЅРёРµ РЅР° СЌРєСЂР°РЅРµ РїСЂРµРїСЏС‚СЃРІРёР№
 	void BlockPipe::SpawnBottomPipesBlock()
-	{	// инициализирую блок (загружаю из ресурсов)
+	{	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р±Р»РѕРє (Р·Р°РіСЂСѓР¶Р°СЋ РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		sf::Sprite sprite(_data->assetcontrols.GetTexture("Pipe Up"));
-		// ставлю позицию появления (от окна) и отнимаю blockPipeSpawn_Y_Offset
+		// СЃС‚Р°РІР»СЋ РїРѕР·РёС†РёСЋ РїРѕСЏРІР»РµРЅРёСЏ (РѕС‚ РѕРєРЅР°) Рё РѕС‚РЅРёРјР°СЋ blockPipeSpawn_Y_Offset
 		sprite.setPosition(_data->window.getSize().x, 
 			_data->window.getSize().y - sprite.getGlobalBounds().height + _blockPipeSpawn_Y_Offset);
 		blockPipeSprites.push_back(sprite);
 	}
 
 	void BlockPipe::SpawnTopPipesBlock()
-	{	// инициализирую блок (загружаю из ресурсов)
+	{	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р±Р»РѕРє (Р·Р°РіСЂСѓР¶Р°СЋ РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		sf::Sprite sprite(_data->assetcontrols.GetTexture("Pipe Down"));
-		// ставлю позицию появления (от окна) и отнимаю blockPipeSpawn_Y_Offset
+		// СЃС‚Р°РІР»СЋ РїРѕР·РёС†РёСЋ РїРѕСЏРІР»РµРЅРёСЏ (РѕС‚ РѕРєРЅР°) Рё РѕС‚РЅРёРјР°СЋ blockPipeSpawn_Y_Offset
 		sprite.setPosition(_data->window.getSize().x, _blockPipeSpawn_Y_Offset - 420);
 		blockPipeSprites.push_back(sprite);
 	}
 
 	void BlockPipe::SpawnInvisiblePipesBlock()
-	{	// инициализирую блок (загружаю из ресурсов)
+	{	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р±Р»РѕРє (Р·Р°РіСЂСѓР¶Р°СЋ РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		sf::Sprite sprite(_data->assetcontrols.GetTexture("Pipe Up"));
-		// ставлю позицию появления (от окна)
+		// СЃС‚Р°РІР»СЋ РїРѕР·РёС†РёСЋ РїРѕСЏРІР»РµРЅРёСЏ (РѕС‚ РѕРєРЅР°)
 		sprite.setPosition(_data->window.getSize().x,
 			_data->window.getSize().y - (sprite.getGlobalBounds().height));
 		sprite.setColor(sf::Color(0, 0, 0, 0));
 		blockPipeSprites.push_back(sprite);
 	}
 
-	// подсчёт пройденых препятствий
+	// РїРѕРґСЃС‡С‘С‚ РїСЂРѕР№РґРµРЅС‹С… РїСЂРµРїСЏС‚СЃС‚РІРёР№
 	void BlockPipe::ScoringPlayerBlocks()
-	{	// инициализирую блок подсчёта
+	{	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р±Р»РѕРє РїРѕРґСЃС‡С‘С‚Р°
 		sf::Sprite sprite(_data->assetcontrols.GetTexture("Scoring BlockPipe"));
-		// ставлю позицию появления (от окна)
+		// СЃС‚Р°РІР»СЋ РїРѕР·РёС†РёСЋ РїРѕСЏРІР»РµРЅРёСЏ (РѕС‚ РѕРєРЅР°)
 		sprite.setPosition(_data->window.getSize().x, 0);
-		// подсчитываю
+		// РїРѕРґСЃС‡РёС‚С‹РІР°СЋ
 		scoringBlocks.push_back(sprite);
 	}
 
-	// для премещения препятсвий в окне
+	// РґР»СЏ РїСЂРµРјРµС‰РµРЅРёСЏ РїСЂРµРїСЏС‚СЃРІРёР№ РІ РѕРєРЅРµ
 	void BlockPipe::MoveBlockPipes(float dt)
 	{
 		for (unsigned short int i = 0; i < blockPipeSprites.size(); i++)
-		{	// передвигаю препятствия
-			// создаю условие для появление блоков препятсвий
+		{	// РїРµСЂРµРґРІРёРіР°СЋ РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
+			// СЃРѕР·РґР°СЋ СѓСЃР»РѕРІРёРµ РґР»СЏ РїРѕСЏРІР»РµРЅРёРµ Р±Р»РѕРєРѕРІ РїСЂРµРїСЏС‚СЃРІРёР№
 			if (blockPipeSprites.at(i).getPosition().x < 0 - blockPipeSprites.at(i).getGlobalBounds().width)
 			{ 
 				blockPipeSprites.erase(blockPipeSprites.begin() + i);
@@ -64,8 +64,8 @@ namespace SoundSonar
 		}
 		
 		for (unsigned short int i = 0; i < scoringBlocks.size(); i++)
-		{	// передвигаю препятствия
-			// создаю условие для появление блоков препятсвий
+		{	// РїРµСЂРµРґРІРёРіР°СЋ РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
+			// СЃРѕР·РґР°СЋ СѓСЃР»РѕРІРёРµ РґР»СЏ РїРѕСЏРІР»РµРЅРёРµ Р±Р»РѕРєРѕРІ РїСЂРµРїСЏС‚СЃРІРёР№
 			if (scoringBlocks.at(i).getPosition().x < 0 - scoringBlocks.at(i).getGlobalBounds().width)
 			{ 
 				scoringBlocks.erase(scoringBlocks.begin() + i);
@@ -81,23 +81,23 @@ namespace SoundSonar
 	void BlockPipe::DrawPipesBlock()
 	{
 		for (unsigned short int i = 0; i < blockPipeSprites.size(); i++)
-		{	// рисую препятствия
+		{	// СЂРёСЃСѓСЋ РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
 			_data->window.draw(blockPipeSprites.at(i));
 		}
 	}
 
 	void BlockPipe::Ramdom_Y_BlockPipeOffset()
-	{	// случайное положение блоков в окне по У
+	{	// СЃР»СѓС‡Р°Р№РЅРѕРµ РїРѕР»РѕР¶РµРЅРёРµ Р±Р»РѕРєРѕРІ РІ РѕРєРЅРµ РїРѕ РЈ
 		_blockPipeSpawn_Y_Offset = -120 + rand() % (_landHeightBlockPipe);
 	}
 
 	const std::vector<sf::Sprite> &BlockPipe::GetSprites() const
-	{	// новый блок препятствие
+	{	// РЅРѕРІС‹Р№ Р±Р»РѕРє РїСЂРµРїСЏС‚СЃС‚РІРёРµ
 		return blockPipeSprites;
 	}
 
 	std::vector<sf::Sprite>& BlockPipe::GetScoringPlayerBlocks() 
-	{	// подсчёт при прохождении блока препятствия
+	{	// РїРѕРґСЃС‡С‘С‚ РїСЂРё РїСЂРѕС…РѕР¶РґРµРЅРёРё Р±Р»РѕРєР° РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
 		return scoringBlocks;
 	}
 }
