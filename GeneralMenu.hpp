@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp> // звук
+#include <SFML/Audio.hpp> // Р·РІСѓРє
 #include "State.hpp"
 #include "GameLoop.hpp"
-// игровое меню
+// РёРіСЂРѕРІРѕРµ РјРµРЅСЋ
 namespace SoundSonar
 {
 	class GeneralMenu : public State
@@ -20,10 +20,10 @@ namespace SoundSonar
 
 	private:
 		GameBirdDataRef _data;
-// звук для меню
+// Р·РІСѓРє РґР»СЏ РјРµРЅСЋ
 		sf::SoundBuffer _completeWavBuffer;
 		sf::Sound _completeWav;
-// фон, заголовок, кнопка
+// С„РѕРЅ, Р·Р°РіРѕР»РѕРІРѕРє, РєРЅРѕРїРєР°
 		sf::Sprite _background;
 		sf::Sprite _title;
 		sf::Sprite _playButton;
