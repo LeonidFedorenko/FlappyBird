@@ -1,29 +1,29 @@
 #include "DisplayPlayerScore.hpp"
 #include <string>
-// вывод результата игры
+// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° РёРіСЂС‹
 namespace SoundSonar
 {
 	DisplayPlayerScore::DisplayPlayerScore(GameBirdDataRef data) : _data(data)
-	{	// назначаю шрифт для результатов
+	{	// РЅР°Р·РЅР°С‡Р°СЋ С€СЂРёС„С‚ РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
 		_scoreText.setFont(_data->assetcontrols.GetFont("Score font"));
-		_scoreText.setString("0"); // очки в начале игры
-		_scoreText.setCharacterSize(96); // размер шрифта
-		_scoreText.setFillColor(sf::Color::Magenta); // цвет шрифта
+		_scoreText.setString("0"); // РѕС‡РєРё РІ РЅР°С‡Р°Р»Рµ РёРіСЂС‹
+		_scoreText.setCharacterSize(96); // СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р°
+		_scoreText.setFillColor(sf::Color::Magenta); // С†РІРµС‚ С€СЂРёС„С‚Р°
 		_scoreText.setOrigin(_scoreText.getGlobalBounds().width / 0.7,
-			_scoreText.getGlobalBounds().height / 2); // положение на окне
+			_scoreText.getGlobalBounds().height / 2); // РїРѕР»РѕР¶РµРЅРёРµ РЅР° РѕРєРЅРµ
 		_scoreText.setPosition(_data->window.getSize().x / 4.7, 
-			_data->window.getSize().y / 15.2); // позиция относительно окна / подбором
+			_data->window.getSize().y / 15.2); // РїРѕР·РёС†РёСЏ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РѕРєРЅР° / РїРѕРґР±РѕСЂРѕРј
 	}
 
-	// для вывода на экран
+	// РґР»СЏ РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ
 	void DisplayPlayerScore::Draw()
 	{
 		_data->window.draw(_scoreText);
 	}
 
-	// для обновления результатов (текущий результат)
+	// РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ (С‚РµРєСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚)
 	void DisplayPlayerScore::UpdateScore(int score)
-	{	// перевожу результат в строку
+	{	// РїРµСЂРµРІРѕР¶Сѓ СЂРµР·СѓР»СЊС‚Р°С‚ РІ СЃС‚СЂРѕРєСѓ
 		_scoreText.setString(std::to_string(score));
 	}
 }
