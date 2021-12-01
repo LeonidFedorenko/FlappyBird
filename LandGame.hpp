@@ -1,19 +1,20 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GameLoop.hpp" // Game.hpp
 
 namespace SoundSonar
-{	// земля в игре
+{	// Р·РµРјР»СЏ РІ РёРіСЂРµ
 	class GameLand
-	{ // публичный метод
+	{ // РїСѓР±Р»РёС‡РЅС‹Р№ РјРµС‚РѕРґ
 	public:
 		GameLand(GameBirdDataRef data);
-		// движение земли в игре
+		// РґРІРёР¶РµРЅРёРµ Р·РµРјР»Рё РІ РёРіСЂРµ
 		void MoveGameLand(float dt);
-		// прорисовка земли в игре
+		// РїСЂРѕСЂРёСЃРѕРІРєР° Р·РµРјР»Рё РІ РёРіСЂРµ
 		void DrawingGameLand();
-		// для столкновений
+		// РґР»СЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№
 		const std::vector<sf::Sprite> &GetSprites() const;
 
 	private:
