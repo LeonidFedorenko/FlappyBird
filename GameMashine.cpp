@@ -1,17 +1,17 @@
 #include "GameMashine.hpp"
 
 namespace SoundSonar
-{	// ìåòîä äëÿ èçìåíåíèÿ ñòàòóñà èãğû 
+{	// Ğ¼ĞµÑ‚Ğ¾Ğ´ Ğ´Ğ»Ñ Ğ¸Ğ·Ğ¼ĞµĞ½ĞµĞ½Ğ¸Ñ ÑÑ‚Ğ°Ñ‚ÑƒÑĞ° Ğ¸Ğ³Ñ€Ñ‹ 
 	void GameMashine::AddState(StateRef newState, bool isReplacing)
 	{
 		this->_isAdding = true;
 		this->_isReplacing = isReplacing;
-		// çàìåíà
+		// Ğ·Ğ°Ğ¼ĞµĞ½Ğ°
 		this->_newState = std::move(newState);
 	}
 
 	void GameMashine::RemoveState()
-	{	// ãîòîâî ê óäàëåíèş
+	{	// Ğ³Ğ¾Ñ‚Ğ¾Ğ²Ğ¾ Ğº ÑƒĞ´Ğ°Ğ»ĞµĞ½Ğ¸Ñ
 		this->_isRemoving = true;
 	}
 
@@ -25,30 +25,30 @@ namespace SoundSonar
 				this->_states.top()->Resume();
 			}
 
-			this->_isRemoving = false; // çàïğåò
+			this->_isRemoving = false; // Ğ·Ğ°Ğ¿Ñ€ĞµÑ‚
 		}
 
 		if (this->_isAdding)
-		{	// åñëè íå ïóñòî
+		{	// ĞµÑĞ»Ğ¸ Ğ½Ğµ Ğ¿ÑƒÑÑ‚Ğ¾
 			if (!this->_states.empty())
 			{
 				if (this->_isReplacing)
-				{	// ìîæíî ïîìåíÿòü
+				{	// Ğ¼Ğ¾Ğ¶Ğ½Ğ¾ Ğ¿Ğ¾Ğ¼ĞµĞ½ÑÑ‚ÑŒ
 					this->_states.pop();
 				}
-				else // â äğóãîì ñëó÷àå (pause)
+				else // Ğ² Ğ´Ñ€ÑƒĞ³Ğ¾Ğ¼ ÑĞ»ÑƒÑ‡Ğ°Ğµ (pause)
 				{
 					this->_states.top()->Pause();
 				}
 			}
-			// óñòàíîâêà íîâîãî ñòàòóñà
+			// ÑƒÑÑ‚Ğ°Ğ½Ğ¾Ğ²ĞºĞ° Ğ½Ğ¾Ğ²Ğ¾Ğ³Ğ¾ ÑÑ‚Ğ°Ñ‚ÑƒÑĞ°
 			this->_states.push(std::move(this->_newState));
 			this->_states.top()->Init();
-			// ïîñëå çàïğåò äîáàâëåíèÿ
+			// Ğ¿Ğ¾ÑĞ»Ğµ Ğ·Ğ°Ğ¿Ñ€ĞµÑ‚ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ñ
 			this->_isAdding = false;
 		}
 	}
-	// ñìåíà ñòàòóñà èãğû
+	// ÑĞ¼ĞµĞ½Ğ° ÑÑ‚Ğ°Ñ‚ÑƒÑĞ° Ğ¸Ğ³Ñ€Ñ‹
 	StateRef &GameMashine::GetActivateState()
 	{
 		return this->_states.top();
