@@ -1,8 +1,8 @@
-#include "LoadSplashHeader.hpp" // заставка
+#include "LoadSplashHeader.hpp" // Р·Р°СЃС‚Р°РІРєР°
 #include "DefiningSplashScreen.hpp"
 #include "State.hpp"
 #include "GeneralMenu.hpp"
-#include <SFML/Audio.hpp> // звуки
+#include <SFML/Audio.hpp> // Р·РІСѓРєРё
 #include <iostream>
 #include <sstream>
 
@@ -10,19 +10,19 @@ namespace SoundSonar
 {
 	LoadSplashHeader::LoadSplashHeader(GameBirdDataRef data) : _data(data)
 	{	}
-	// инициализирую заставку
+	// РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋ Р·Р°СЃС‚Р°РІРєСѓ
 	void LoadSplashHeader::Init()
-	{	// загружаю рисунок заставки из ресурсов
+	{	// Р·Р°РіСЂСѓР¶Р°СЋ СЂРёСЃСѓРЅРѕРє Р·Р°СЃС‚Р°РІРєРё РёР· СЂРµСЃСѓСЂСЃРѕРІ
 		_data->assetcontrols.LoadTextureImage("Splash State Background", 
 			SPLASH_SCENE_BACKGROUND_FILEPATH);
-		// устанавливаю данный рисунок
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋ РґР°РЅРЅС‹Р№ СЂРёСЃСѓРЅРѕРє
 		_background.setTexture(this->_data->assetcontrols.GetTexture("Splash State Background"));
 		if (!_completeWavBuffer.loadFromFile(SOUND_COMLETE_FILEPATH))
 		{
-			std::cout << "Ошибка при загрузке звука!" << std::endl;
+			std::cout << "СњС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ Р·РІСѓРєР°!" << std::endl;
 		}
 		_completeWav.setBuffer(_completeWavBuffer);
-		// озвучиваю
+		// РѕР·РІСѓС‡РёРІР°СЋ
 		_completeWav.play();
 	}
 
@@ -33,7 +33,7 @@ namespace SoundSonar
 		while (_data->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
-			{	// закрываю окно
+			{	// Р·Р°РєСЂС‹РІР°СЋ РѕРєРЅРѕ
 				_data->window.close();
 			}
 		}
@@ -42,17 +42,17 @@ namespace SoundSonar
 	void LoadSplashHeader::Update(float dt)
 	{
 		if (_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
-		{	// Здесь будет переход в меню
+		{	// В«РґРµСЃСЊ Р±СѓРґРµС‚ РїРµСЂРµС…РѕРґ РІ РјРµРЅСЋ
 			_data->mashinegame.AddState(StateRef(new GeneralMenu(_data)), true);
 		}
 	}
 
 	void LoadSplashHeader::Draw(float dt)
-	{	// чищу окно
+	{	// С‡РёС‰Сѓ РѕРєРЅРѕ
 		_data->window.clear();
-		// рисую подложку (рисунок из ресурсов)
+		// СЂРёСЃСѓСЋ РїРѕРґР»РѕР¶РєСѓ (СЂРёСЃСѓРЅРѕРє РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		_data->window.draw(_background);
-		// показываю на экране
+		// РїРѕРєР°Р·С‹РІР°СЋ РЅР° СЌРєСЂР°РЅРµ
 		_data->window.display();
 	}
 }
