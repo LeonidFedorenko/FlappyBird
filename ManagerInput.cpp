@@ -1,26 +1,26 @@
 #include "ManagerInput.hpp"
 
-// курсор мыши
+// РєСѓСЂСЃРѕСЂ РјС‹С€Рё
 namespace SoundSonar
 {
 	bool ManagerInput::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window)
 	{
 		if (sf::Mouse::isButtonPressed(button))
-		{	// если нажата клавиша - определяю позицию
+		{	// РµСЃР»Рё РЅР°Р¶Р°С‚Р° РєР»Р°РІРёС€Р° - РѕРїСЂРµРґРµР»СЏСЋ РїРѕР·РёС†РёСЋ
 			sf::IntRect tempRect(object.getPosition().x, object.getPosition().y, 
 				object.getGlobalBounds().width, object.getGlobalBounds().height);
-			// если курсор в пределах окна (проверка)
+			// РµСЃР»Рё РєСѓСЂСЃРѕСЂ РІ РїСЂРµРґРµР»Р°С… РѕРєРЅР° (РїСЂРѕРІРµСЂРєР°)
 			if (tempRect.contains(sf::Mouse::getPosition(window)))
 			{
 				return true;
 			}
 		}
-		// проверка не пройдена
+		// РїСЂРѕРІРµСЂРєР° РЅРµ РїСЂРѕР№РґРµРЅР°
 		return false;
 	}
 
 	sf::Vector2i ManagerInput::GetMousePosition(sf::RenderWindow &window)
-	{	// возвращаю позицию курсора
+	{	// РІРѕР·РІСЂР°С‰Р°СЋ РїРѕР·РёС†РёСЋ РєСѓСЂСЃРѕСЂР°
 		return sf::Mouse::getPosition(window);
 	}
 }
