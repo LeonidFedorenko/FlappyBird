@@ -1,15 +1,15 @@
 #pragma once
-// для столкновений в игре
+// РґР»СЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№ РІ РёРіСЂРµ
 #include <SFML/Graphics.hpp>
 
 namespace SoundSonar
 {
 	class AllCollisions
 	{
-	public: // констуктор
+	public: // РєРѕРЅСЃС‚СѓРєС‚РѕСЂ
 		AllCollisions();
 		bool CheckAllCollisions(sf::Sprite sprite1, sf::Sprite sprite2);
-		// уменьшаю расстояние для столкновения
+		// СѓРјРµРЅСЊС€Р°СЋ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РґР»СЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
 		bool CheckAllCollisions(sf::Sprite sprite1, float scaleOne, sf::Sprite sprite2, float scaleTwo);
 	};
 }
