@@ -3,24 +3,24 @@
 namespace SoundSonar
 {
 	GlossFlashSpeed::GlossFlashSpeed(GameBirdDataRef data) : _data(data)
-	{	// на всю область окна
+	{	// РЅР° РІСЃСЋ РѕР±Р»Р°СЃС‚СЊ РѕРєРЅР°
 		_shape = sf::RectangleShape(sf::Vector2f(_data->window.getSize()));
-		// ставлю цвет вспышки
-		_shape.setFillColor(sf::Color(255, 0, 0, 0));  // красный
-		// по умолчанию разрешаю вспышку
+		// СЃС‚Р°РІР»СЋ С†РІРµС‚ РІСЃРїС‹С€РєРё
+		_shape.setFillColor(sf::Color(255, 0, 0, 0));  // РєСЂР°СЃРЅС‹Р№
+		// РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°Р·СЂРµС€Р°СЋ РІСЃРїС‹С€РєСѓ
 		_glossFlashON = true;
 	}
 
-	// метод воспроизведение вспышки
+	// РјРµС‚РѕРґ РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ РІСЃРїС‹С€РєРё
 	void GlossFlashSpeed::Show(float dt)
-	{	// проверка разрешена ли вспышка
+	{	// РїСЂРѕРІРµСЂРєР° СЂР°Р·СЂРµС€РµРЅР° Р»Рё РІСЃРїС‹С€РєР°
 		if (_glossFlashON)
 		{
 			int alpha = (int)_shape.getFillColor().a + (GLOSS_FLASH_SPEED * dt);
 			if (alpha >= 255.0f)
 			{
 				alpha = 255.0f;
-				_glossFlashON = false; // запрещаю
+				_glossFlashON = false; // Р·Р°РїСЂРµС‰Р°СЋ
 			}
 			_shape.setFillColor(sf::Color(255, 0, 0, alpha));
 		}
@@ -30,13 +30,13 @@ namespace SoundSonar
 			if (alpha <= 0.0f)
 			{
 				alpha = 0.0f;
-				_glossFlashON = false; // запрещаю
+				_glossFlashON = false; // Р·Р°РїСЂРµС‰Р°СЋ
 			}
 			_shape.setFillColor(sf::Color(255, 0, 0, alpha));
 		}
 	}
 
-	// метод для прорисовки
+	// РјРµС‚РѕРґ РґР»СЏ РїСЂРѕСЂРёСЃРѕРІРєРё
 	void GlossFlashSpeed::Draw()
 	{
 		_data->window.draw(_shape);
