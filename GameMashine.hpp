@@ -1,34 +1,34 @@
 #pragma once
-#include <memory> // память
+#include <memory> // РїР°РјСЏС‚СЊ
 #include <stack>
 #include "State.hpp"
 
 namespace SoundSonar //Sonar
-{	// класс unique_ptr - средство управления ресурсом
-	// typedef позволяет создать псевдоним для любого типа данных 
-	typedef std::unique_ptr<State> StateRef; // текущее состояние
+{	// РєР»Р°СЃСЃ unique_ptr - СЃСЂРµРґСЃС‚РІРѕ СѓРїСЂР°РІР»РµРЅРёСЏ СЂРµСЃСѓСЂСЃРѕРј
+	// typedef РїРѕР·РІРѕР»СЏРµС‚ СЃРѕР·РґР°С‚СЊ РїСЃРµРІРґРѕРЅРёРј РґР»СЏ Р»СЋР±РѕРіРѕ С‚РёРїР° РґР°РЅРЅС‹С… 
+	typedef std::unique_ptr<State> StateRef; // С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
 
 	class GameMashine //StateMashine
 	{
-	public: // конструктор
+	public: // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		GameMashine() { }
-		// деструктор
+		// РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 		~GameMashine() { }
 
-		// обновляю состояние игры
+		// РѕР±РЅРѕРІР»СЏСЋ СЃРѕСЃС‚РѕСЏРЅРёРµ РёРіСЂС‹
 		void AddState(StateRef newState, bool isReplacing = true);
-		// убираю состояние
+		// СѓР±РёСЂР°СЋ СЃРѕСЃС‚РѕСЏРЅРёРµ
 		void RemoveState();
 
-		// изменяю статус игры
+		// РёР·РјРµРЅСЏСЋ СЃС‚Р°С‚СѓСЃ РёРіСЂС‹
 		void ProcessStateChanges();
 
 		StateRef &GetActivateState();
 
 	private:
-		std::stack<StateRef> _states; // все статусы игры
-		StateRef _newState; // новый статус
-		// операции со статусами
+		std::stack<StateRef> _states; // РІСЃРµ СЃС‚Р°С‚СѓСЃС‹ РёРіСЂС‹
+		StateRef _newState; // РЅРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ
+		// РѕРїРµСЂР°С†РёРё СЃРѕ СЃС‚Р°С‚СѓСЃР°РјРё
 		bool _isRemoving;
 		bool _isAdding;
 		bool _isReplacing;
