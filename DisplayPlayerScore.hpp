@@ -3,20 +3,20 @@
 #include "DefiningSplashScreen.hpp"
 #include "GameLoop.hpp"
 
-// вывод результата игры
+// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° РёРіСЂС‹
 namespace SoundSonar
 {
 	class DisplayPlayerScore
 	{
 	public:
 		DisplayPlayerScore(GameBirdDataRef data);
-		// для вывода на экран
+		// РґР»СЏ РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ
 		void Draw();
-		// для обновления результатов (текущий результат)
+		// РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ (С‚РµРєСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚)
 		void UpdateScore(int score);
 
 	private:
 		GameBirdDataRef _data;
-		sf::Text _scoreText; // для результата
+		sf::Text _scoreText; // РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 	};
 }
