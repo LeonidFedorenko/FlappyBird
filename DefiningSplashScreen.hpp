@@ -1,85 +1,85 @@
 #pragma once
-// задаю размер окна заставки
+// Р·Р°РґР°СЋ СЂР°Р·РјРµСЂ РѕРєРЅР° Р·Р°СЃС‚Р°РІРєРё
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 1024
-// заголовок 
+// Р·Р°РіРѕР»РѕРІРѕРє 
 #define WINDOW_TITLE "Game ''Flappy Bird'' / Management: left mouse button."
-// ставлю иконку
+// СЃС‚Р°РІР»СЋ РёРєРѕРЅРєСѓ
 #define IDI_ICON1 "Resources/FlappyBird.ico"
-// время показа заствавки
+// РІСЂРµРјСЏ РїРѕРєР°Р·Р° Р·Р°СЃС‚РІР°РІРєРё
 #define SPLASH_STATE_SHOW_TIME 2.5
-// файл фона для заставки
+// С„Р°Р№Р» С„РѕРЅР° РґР»СЏ Р·Р°СЃС‚Р°РІРєРё
 #define SPLASH_SCENE_BACKGROUND_FILEPATH "Resources/SplashGame.png"
-// зарузка ресурсов для основного меню
-// 1. фон - небо, солнце, облака, поле
+// Р·Р°СЂСѓР·РєР° СЂРµСЃСѓСЂСЃРѕРІ РґР»СЏ РѕСЃРЅРѕРІРЅРѕРіРѕ РјРµРЅСЋ
+// 1. С„РѕРЅ - РЅРµР±Рѕ, СЃРѕР»РЅС†Рµ, РѕР±Р»Р°РєР°, РїРѕР»Рµ
 #define MAIN_MENU_BACKGROUND_FILEPATH "Resources/SkySunGame.png"
-// 2. заголовок меню - надпись (RU-EN)
+// 2. Р·Р°РіРѕР»РѕРІРѕРє РјРµРЅСЋ - РЅР°РґРїРёСЃСЊ (RU-EN)
 #define GAME_TITLE_FILEPATH "Resources/TitleGame.png"
-// 3. кнопка для запуска игры
+// 3. РєРЅРѕРїРєР° РґР»СЏ Р·Р°РїСѓСЃРєР° РёРіСЂС‹
 #define PLAY_BUTTON_FILEPATH "Resources/PlayButton.png"
-// фон для игры 
+// С„РѕРЅ РґР»СЏ РёРіСЂС‹ 
 #define GAME_BACKGROUND_FILEPATH "Resources/SkyFonGame.png"
-// фон для GameOver 
+// С„РѕРЅ РґР»СЏ GameOver 
 #define GAME_OVER_BACKGROUND_FILEPATH "Resources/FonGameOver.png"
-// препятствия
+// РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
 #define PIPE_UP_FILEPATH "Resources/PipeUp.png"
 #define PIPE_DOWN_FILEPATH "Resources/PipeDown.png"
-// для подсчета очков в консоле 
+// РґР»СЏ РїРѕРґСЃС‡РµС‚Р° РѕС‡РєРѕРІ РІ РєРѕРЅСЃРѕР»Рµ 
 #define BLOCK_SCORING_FILEPATH "Resources/InvisibleBlockScoring.png"
-// скорость движения препятсвий
+// СЃРєРѕСЂРѕСЃС‚СЊ РґРІРёР¶РµРЅРёСЏ РїСЂРµРїСЏС‚СЃРІРёР№
 #define PIPE_MOVEMENT_SPEED 235.0f
-// частота появления препятствий
+// С‡Р°СЃС‚РѕС‚Р° РїРѕСЏРІР»РµРЅРёСЏ РїСЂРµРїСЏС‚СЃС‚РІРёР№
 #define PIPE_SPAWN_FREQUENCY 3.3f
-// земля в игре (рисунок)
+// Р·РµРјР»СЏ РІ РёРіСЂРµ (СЂРёСЃСѓРЅРѕРє)
 #define LAND_FILEPATH "Resources/LandGame.png"
-// картинки для анимации птички
+// РєР°СЂС‚РёРЅРєРё РґР»СЏ Р°РЅРёРјР°С†РёРё РїС‚РёС‡РєРё
 #define BIRD_FRAME1_FILEPATH "Resources/fbird1.png"
 #define BIRD_FRAME2_FILEPATH "Resources/fbird2.png"
 #define BIRD_FRAME3_FILEPATH "Resources/fbird3.png"
 #define BIRD_FRAME4_FILEPATH "Resources/fbird4.png"
-// шрифт для результатов игры
+// С€СЂРёС„С‚ РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РёРіСЂС‹
 #define SCORE_FONT_FILEPATH "Resources/ScoreFont.ttf"
-// заголовок при геймовере
+// Р·Р°РіРѕР»РѕРІРѕРє РїСЂРё РіРµР№РјРѕРІРµСЂРµ
 #define TITLE_GAME_OVER_FILEPATH "Resources/Title-Game-Over.png"
-// инфо по центру при геймовере
+// РёРЅС„Рѕ РїРѕ С†РµРЅС‚СЂСѓ РїСЂРё РіРµР№РјРѕРІРµСЂРµ
 #define INFO_GAME_OVER_FILEPATH "Resources/Game-Over-Body.png"
-// рисую медали
+// СЂРёСЃСѓСЋ РјРµРґР°Р»Рё
 #define MEDAL_NONE_FILEPATH "Resources/MedalNone.png"
 #define MEDAL_BRONZE_FILEPATH "Resources/MedalBronze.png"
 #define MEDAL_SILVER_FILEPATH "Resources/MedalSilver.png"
 #define MEDAL_GOLD_FILEPATH "Resources/MedalGold.png"
 #define MEDAL_PLATINUM_FILEPATH "Resources/MedalPlatinum.png"
-// для анимации птицы (время смены спрайтов)
+// РґР»СЏ Р°РЅРёРјР°С†РёРё РїС‚РёС†С‹ (РІСЂРµРјСЏ СЃРјРµРЅС‹ СЃРїСЂР°Р№С‚РѕРІ)
 #define BIRD_ANIMATION_DURATION 0.3f
-// звуки в игре
+// Р·РІСѓРєРё РІ РёРіСЂРµ
 #define SOUND_HIT_FILEPATH "Resources/Hit.wav"
 #define SOUND_POINT_FILEPATH "Resources/Point.wav" 
 #define SOUND_WING_FILEPATH "Resources/Wing.wav"
 #define SOUND_COMLETE_FILEPATH "Resources/Complete.wav"
-// состояния полёта птицы
-#define BIRD_ONE_STILL 1 // текущее
-#define BIRD_TWO_FALLING 2 // падение
-#define BIRD_THREE_FLYING 3 // в процессе полёта
-// сила притяжения
+// СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРѕР»С‘С‚Р° РїС‚РёС†С‹
+#define BIRD_ONE_STILL 1 // С‚РµРєСѓС‰РµРµ
+#define BIRD_TWO_FALLING 2 // РїР°РґРµРЅРёРµ
+#define BIRD_THREE_FLYING 3 // РІ РїСЂРѕС†РµСЃСЃРµ РїРѕР»С‘С‚Р°
+// СЃРёР»Р° РїСЂРёС‚СЏР¶РµРЅРёСЏ
 #define WORLD_GRAVITY 70.0f
-// скорость полёта птицы
+// СЃРєРѕСЂРѕСЃС‚СЊ РїРѕР»С‘С‚Р° РїС‚РёС†С‹
 #define BIRD_FLY_SPEED 130.0f
-// длительность полёта птицы
+// РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ РїРѕР»С‘С‚Р° РїС‚РёС†С‹
 #define BIRD_FLY_DURATION 0.45f
-// для смены направления полёта птицы (чуть-чуть меняю угол)
+// РґР»СЏ СЃРјРµРЅС‹ РЅР°РїСЂР°РІР»РµРЅРёСЏ РїРѕР»С‘С‚Р° РїС‚РёС†С‹ (С‡СѓС‚СЊ-С‡СѓС‚СЊ РјРµРЅСЏСЋ СѓРіРѕР»)
 #define BIRD_FLIGHT_ANGLE 60.0f
-// создаю перечисление для статусов игры
+// СЃРѕР·РґР°СЋ РїРµСЂРµС‡РёСЃР»РµРЅРёРµ РґР»СЏ СЃС‚Р°С‚СѓСЃРѕРІ РёРіСЂС‹
 enum GameBirdStates
 {
 	eReady,
 	ePlayGame,
 	eGameOver
 };
-// вспышка при столкновении с поверхностью (красным)
+// РІСЃРїС‹С€РєР° РїСЂРё СЃС‚РѕР»РєРЅРѕРІРµРЅРёРё СЃ РїРѕРІРµСЂС…РЅРѕСЃС‚СЊСЋ (РєСЂР°СЃРЅС‹Рј)
 #define GLOSS_FLASH_SPEED 1777.7f
-// время при геймовере
+// РІСЂРµРјСЏ РїСЂРё РіРµР№РјРѕРІРµСЂРµ
 #define TIME_BEFORE_GAME_OVER 0.7f
-// количество очков для получения медали
+// РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‡РєРѕРІ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РјРµРґР°Р»Рё
 #define SCORE_NONE_MEDAL 0
 #define SCORE_BRONZE_MEDAL 20
 #define SCORE_SILVER_MEDAL 50
