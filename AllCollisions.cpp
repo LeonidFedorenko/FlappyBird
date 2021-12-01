@@ -1,18 +1,18 @@
-// для столкновений в игре
+// Г¤Г«Гї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГ© Гў ГЁГЈГ°ГҐ 
 #include "AllCollisions.hpp"
 
 namespace SoundSonar
-{	// конструктор столкновений
+{	// ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГ©
 	AllCollisions::AllCollisions()
 	{
 
 	}
-	// переменные для проверки столкновений
+	// ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГ©
 	bool AllCollisions::CheckAllCollisions(sf::Sprite spriteOne, sf::Sprite spriteTwo)
 	{
 		sf::Rect<float> rectOne = spriteOne.getGlobalBounds();
 		sf::Rect<float> rectTwo = spriteTwo.getGlobalBounds();
-		// проверка столкновения
+		// ГЇГ°Г®ГўГҐГ°ГЄГ  Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї
 		if (rectOne.intersects(rectTwo))
 		{
 			return true;
@@ -23,14 +23,14 @@ namespace SoundSonar
 		}
 	}
 
-	// более точные переменные для проверки столкновений
+	// ГЎГ®Г«ГҐГҐ ГІГ®Г·Г­Г»ГҐ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї ГЇГ°Г®ГўГҐГ°ГЄГЁ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГ©
 	bool AllCollisions::CheckAllCollisions(sf::Sprite spriteOne, float scaleOne, sf::Sprite spriteTwo, float scaleTwo)
 	{
 		spriteOne.setScale(scaleOne, scaleOne);
 		spriteTwo.setScale(scaleTwo, scaleTwo);
 		sf::Rect<float> rectOne = spriteOne.getGlobalBounds();
 		sf::Rect<float> rectTwo = spriteTwo.getGlobalBounds();
-		// проверка столкновения
+		// ГЇГ°Г®ГўГҐГ°ГЄГ  Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї
 		if (rectOne.intersects(rectTwo))
 		{
 			return true;
