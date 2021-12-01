@@ -1,32 +1,32 @@
 #pragma once
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include "AssetsСontrol.hpp"
+#include "AssetsРЎontrol.hpp"
 #include "GameMashine.hpp"
 #include "ManagerInput.hpp"
 
 namespace SoundSonar
-{	// структура для игры
+{	// СЃС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РёРіСЂС‹
 	struct GameBirdData
 	{
-		GameMashine mashinegame; // статус игры
-		sf::RenderWindow window; // окно
-		AssetsControl assetcontrols; // фон, шрифт
-		ManagerInput input; // ввод
+		GameMashine mashinegame; // СЃС‚Р°С‚СѓСЃ РёРіСЂС‹
+		sf::RenderWindow window; // РѕРєРЅРѕ
+		AssetsControl assetcontrols; // С„РѕРЅ, С€СЂРёС„С‚
+		ManagerInput input; // РІРІРѕРґ
 	};
 
 	typedef std::shared_ptr<GameBirdData> GameBirdDataRef;
 
-	class Game // класс для игры
+	class Game // РєР»Р°СЃСЃ РґР»СЏ РёРіСЂС‹
 	{
 	public:
 		Game(int width, int height, std::string title);
 	private:
-		// обновления выполняются со скоростью 60 в секунду
+		// РѕР±РЅРѕРІР»РµРЅРёСЏ РІС‹РїРѕР»РЅСЏСЋС‚СЃСЏ СЃРѕ СЃРєРѕСЂРѕСЃС‚СЊСЋ 60 РІ СЃРµРєСѓРЅРґСѓ
 		const float dt = 1.0f / 60.0f;
-		sf::Clock _clock; // время
-		// для создания и запуска игры
+		sf::Clock _clock; // РІСЂРµРјСЏ
+		// РґР»СЏ СЃРѕР·РґР°РЅРёСЏ Рё Р·Р°РїСѓСЃРєР° РёРіСЂС‹
 		GameBirdDataRef _data = std::make_shared<GameBirdData>();
-		void Run(); // запуск
+		void Run(); // Р·Р°РїСѓСЃРє
 	};
 }
