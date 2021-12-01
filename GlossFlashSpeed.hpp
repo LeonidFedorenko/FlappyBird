@@ -3,22 +3,22 @@
 #include "GameLoop.hpp"
 #include "AllCollisions.hpp"
 #include "DefiningSplashScreen.hpp"
-// обработка столкновений
+// РѕР±СЂР°Р±РѕС‚РєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№
 namespace SoundSonar
 {
-	class GlossFlashSpeed // класс для вспышки при столкновении
+	class GlossFlashSpeed // РєР»Р°СЃСЃ РґР»СЏ РІСЃРїС‹С€РєРё РїСЂРё СЃС‚РѕР»РєРЅРѕРІРµРЅРёРё
 	{
 	public:
-		// конструктор
+		// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		GlossFlashSpeed( GameBirdDataRef data);
-		// показываю
+		// РїРѕРєР°Р·С‹РІР°СЋ
 		void Show(float dt);
-		void Draw(); // рисую
+		void Draw(); // СЂРёСЃСѓСЋ
 
 	private:
 		GameBirdDataRef _data;
 		sf::RectangleShape _shape;
-		// переменная для возможности вспышки
+		// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІСЃРїС‹С€РєРё
 		bool _glossFlashON;
 	};
 }
