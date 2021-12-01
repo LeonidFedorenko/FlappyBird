@@ -4,29 +4,29 @@
 namespace SoundSonar
 {
 	Game::Game(int width, int height, std::string title)
-	{	// äëÿ ñëó÷àéíîãî ïîÿâëåíèÿ ïîçèöèé áëîêîâ
+	{	// Ð´Ð»Ñ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ð³Ð¾ Ð¿Ð¾ÑÐ²Ð»ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¹ Ð±Ð»Ð¾ÐºÐ¾Ð²
 		srand(time(NULL));
-		// ñîçäàþ îêíî
+		// ÑÐ¾Ð·Ð´Ð°ÑŽ Ð¾ÐºÐ½Ð¾
 		_data->window.create(sf::VideoMode(width, height), title, 
 			sf::Style::Close | sf::Style::Titlebar);
-		// çàñòàâêà
+		// Ð·Ð°ÑÑ‚Ð°Ð²ÐºÐ°
 		_data->mashinegame.AddState(StateRef(new LoadSplashHeader(this->_data)));
-		// çàïóñê
+		// Ð·Ð°Ð¿ÑƒÑÐº
 		this->Run();
 	}
 
 	void Game::Run()
-	{	// ïåðåìåííûå äëÿ îêíà (âðåìÿ è ñãëàæèâàíèå)
+	{	// Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ Ð´Ð»Ñ Ð¾ÐºÐ½Ð° (Ð²Ñ€ÐµÐ¼Ñ Ð¸ ÑÐ³Ð»Ð°Ð¶Ð¸Ð²Ð°Ð½Ð¸Ðµ)
 		float newGameTime, frameGameTime, interpolation;
-		// äëÿ âðåìåíè
+		// Ð´Ð»Ñ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸
 		float currentTime = this->_clock.getElapsedTime().asSeconds();
-		// íàêîïëåíèå âðåìåíè â èãðå
+		// Ð½Ð°ÐºÐ¾Ð¿Ð»ÐµÐ½Ð¸Ðµ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ Ð² Ð¸Ð³Ñ€Ðµ
 		float accumulatorTime = 0.0f;
-		// ïîêà îòêðûòî îêíî
+		// Ð¿Ð¾ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¾ Ð¾ÐºÐ½Ð¾
 		while (this->_data->window.isOpen())
-		{	// ñòàòóñ èãðû ìîæåò ìåíÿòüñÿ
+		{	// ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¸Ð³Ñ€Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¼ÐµÐ½ÑÑ‚ÑŒÑÑ
 			this->_data->mashinegame.ProcessStateChanges();
-			// çàñåêàþ âðåìÿ èãðû
+			// Ð·Ð°ÑÐµÐºÐ°ÑŽ Ð²Ñ€ÐµÐ¼Ñ Ð¸Ð³Ñ€Ñ‹
 			newGameTime = this->_clock.getElapsedTime().asSeconds();
 			frameGameTime = newGameTime - currentTime;
 			if (frameGameTime > 0.25f)
@@ -34,7 +34,7 @@ namespace SoundSonar
 				frameGameTime = 0.25f;
 			}
 			currentTime = newGameTime;
-			// ïðèáàâëÿþ âðåìÿ èãðû
+			// Ð¿Ñ€Ð¸Ð±Ð°Ð²Ð»ÑÑŽ Ð²Ñ€ÐµÐ¼Ñ Ð¸Ð³Ñ€Ñ‹
 			accumulatorTime += frameGameTime;
 			while (accumulatorTime >= dt)
 			{
