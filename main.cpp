@@ -1,8 +1,8 @@
-#include "GameLoop.hpp" // игра
-#include "DefiningSplashScreen.hpp" // заставка
+#include "GameLoop.hpp" // РёРіСЂР°
+#include "DefiningSplashScreen.hpp" // Р·Р°СЃС‚Р°РІРєР°
 
 int main()
-{	// размер окна и заголовок WINDOW_TITLE
+{	// СЂР°Р·РјРµСЂ РѕРєРЅР° Рё Р·Р°РіРѕР»РѕРІРѕРє WINDOW_TITLE
 	SoundSonar::Game(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
 	return EXIT_SUCCESS;
 }
