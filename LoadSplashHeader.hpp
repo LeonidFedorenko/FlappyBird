@@ -1,11 +1,11 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp> // звуки
+#include <SFML/Audio.hpp> // Р·РІСѓРєРё
 #include "State.hpp"
 #include "GameLoop.hpp"
 #include <iostream>
 
 namespace SoundSonar
-{	// для заставки
+{	// РґР»СЏ Р·Р°СЃС‚Р°РІРєРё
 	class LoadSplashHeader : public State
 	{
 	public:
@@ -21,12 +21,12 @@ namespace SoundSonar
 
 	private:
 		GameBirdDataRef _data;
-		// время заставки
+		// РІСЂРµРјСЏ Р·Р°СЃС‚Р°РІРєРё
 		sf::Clock _clock;
-		// звук	
+		// Р·РІСѓРє	
 		sf::SoundBuffer _completeWavBuffer;
 		sf::Sound _completeWav;
-		// заставка-картинка
+		// Р·Р°СЃС‚Р°РІРєР°-РєР°СЂС‚РёРЅРєР°
 		sf::Sprite _background;
 	};
 }
