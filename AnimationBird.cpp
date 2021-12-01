@@ -3,37 +3,37 @@
 namespace SoundSonar
 {
 	frameBird::frameBird(GameBirdDataRef data) : _data(data)
-	{	// анимация птицы
+	{	// Р°РЅРёРјР°С†РёВ¤ РїС‚РёС†С‹
 		_animationIterator = 0;
-		// 4 кадра анимации птицы
+		// 4 РєР°РґСЂР° Р°РЅРёРјР°С†РёРё РїС‚РёС†С‹
 		_animationFrames.push_back(_data->assetcontrols.GetTexture("Bird Frame_1"));
 		_animationFrames.push_back(_data->assetcontrols.GetTexture("Bird Frame_2"));
 		_animationFrames.push_back(_data->assetcontrols.GetTexture("Bird Frame_3"));
 		_animationFrames.push_back(_data->assetcontrols.GetTexture("Bird Frame_4"));
-		// обращаюсь к ресурсам для получения рисунков
+		// РѕР±СЂР°С‰Р°СЋСЃСЊ Рє СЂРµСЃСѓСЂСЃР°Рј РґР»В¤ РїРѕР»СѓС‡РµРЅРёВ¤ СЂРёСЃСѓРЅРєРѕРІ
 		_fBirdSprite.setTexture(_animationFrames.at(_animationIterator));
-		// для изменения позиции птицы (в полёте)
+		// РґР»В¤ РёР·РјРµРЅРµРЅРёВ¤ РїРѕР·РёС†РёРё РїС‚РёС†С‹ (РІ РїРѕР»Р„С‚Рµ)
 		_fBirdSprite.setPosition(
 			(_data->window.getSize().x / 4) - (_fBirdSprite.getGlobalBounds().width / 2),
 			(_data->window.getSize().y / 2) - (_fBirdSprite.getGlobalBounds().height / 2));
 		_birdState = BIRD_ONE_STILL;
-		// для смены угла-направления полёта
+		// РґР»В¤ СЃРјРµРЅС‹ СѓРіР»Р°-РЅР°РїСЂР°РІР»РµРЅРёВ¤ РїРѕР»Р„С‚Р°
 		sf::Vector2f origin = sf::Vector2f(_fBirdSprite.getGlobalBounds().width / 2,
-			_fBirdSprite.getGlobalBounds().height / 2); // меняю
-		_fBirdSprite.setOrigin(origin); // ставлю угол
+			_fBirdSprite.getGlobalBounds().height / 2); // РјРµРЅВ¤СЋ
+		_fBirdSprite.setOrigin(origin); // СЃС‚Р°РІР»СЋ СѓРіРѕР»
 		_flightAngle = 0;
 	}
 
 	void frameBird::Draw()
-	{	// прорисовка птицы
+	{	// РїСЂРѕСЂРёСЃРѕРІРєР° РїС‚РёС†С‹
 		_data->window.draw(_fBirdSprite);
 	}
 
-	// анимация кадров для птицы
+	// Р°РЅРёРјР°С†РёВ¤ РєР°РґСЂРѕРІ РґР»В¤ РїС‚РёС†С‹
 	void frameBird::AnimateBird(float dt)
-	{	// проверяю нужно ли менять кадр для птицы
+	{	// РїСЂРѕРІРµСЂВ¤СЋ РЅСѓР¶РЅРѕ Р»Рё РјРµРЅВ¤С‚СЊ РєР°РґСЂ РґР»В¤ РїС‚РёС†С‹
 		if (_clock.getElapsedTime().asSeconds() > BIRD_ANIMATION_DURATION / _animationFrames.size())
-		{	// время кадра указываю в файле DefiningSplashScreen.hpp
+		{	// РІСЂРµРјВ¤ РєР°РґСЂР° СѓРєР°Р·С‹РІР°СЋ РІ С„Р°Р№Р»Рµ DefiningSplashScreen.hpp
 			if (_animationIterator < _animationFrames.size() - 1)
 			{
 				_animationIterator++;
@@ -42,53 +42,53 @@ namespace SoundSonar
 			{
 				_animationIterator = 0;
 			}
-			// меняю рисунок-текстуру птицы
+			// РјРµРЅВ¤СЋ СЂРёСЃСѓРЅРѕРє-С‚РµРєСЃС‚СѓСЂСѓ РїС‚РёС†С‹
 			_fBirdSprite.setTexture(_animationFrames.at(_animationIterator));
-			_clock.restart(); // перезапуск таймера
+			_clock.restart(); // РїРµСЂРµР·Р°РїСѓСЃРє С‚Р°Р№РјРµСЂР°
 		}
 	}
 
-	// обновление позиции птицы в окне
+	// РѕР±РЅРѕРІР»РµРЅРёРµ РїРѕР·РёС†РёРё РїС‚РёС†С‹ РІ РѕРєРЅРµ
 	void frameBird::Update(float dt)
-	{	// проверяю текущее состояние птицы
+	{	// РїСЂРѕРІРµСЂВ¤СЋ С‚РµРєСѓС‰РµРµ СЃРѕСЃС‚РѕВ¤РЅРёРµ РїС‚РёС†С‹
 		if (BIRD_TWO_FALLING == _birdState)
-		{	// меняю потложение по оси У
+		{	// РјРµРЅВ¤СЋ РїРѕС‚Р»РѕР¶РµРЅРёРµ РїРѕ РѕСЃРё вЂќ
 			_fBirdSprite.move(0, WORLD_GRAVITY * dt);
-			// меняю угол
+			// РјРµРЅВ¤СЋ СѓРіРѕР»
 			_flightAngle += BIRD_FLIGHT_ANGLE * dt;
-			// проверяю-меняю угол наклона
+			// РїСЂРѕРІРµСЂВ¤СЋ-РјРµРЅВ¤СЋ СѓРіРѕР» РЅР°РєР»РѕРЅР°
 			if (_flightAngle > 33.0f)
 			{
 				_flightAngle = 33.0f;
 			}
-			// ставлю угол
+			// СЃС‚Р°РІР»СЋ СѓРіРѕР»
 			_fBirdSprite.setRotation(_flightAngle);
 		}
 		else if (BIRD_THREE_FLYING == _birdState)
 		{
 			_fBirdSprite.move(0, (-0.5) * BIRD_FLY_SPEED * dt);
-			// меняю угол
+			// РјРµРЅВ¤СЋ СѓРіРѕР»
 			_flightAngle -= BIRD_FLIGHT_ANGLE * dt;
-			// проверяю-меняю угол наклона
+			// РїСЂРѕРІРµСЂВ¤СЋ-РјРµРЅВ¤СЋ СѓРіРѕР» РЅР°РєР»РѕРЅР°
 			if (_flightAngle < -33.0f)
 			{
 				_flightAngle = -33.0f;
 			}
-			// ставлю угол
+			// СЃС‚Р°РІР»СЋ СѓРіРѕР»
 			_fBirdSprite.setRotation(_flightAngle);
 		}
-		// проверяю длительность полёта
+		// РїСЂРѕРІРµСЂВ¤СЋ РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ РїРѕР»Р„С‚Р°
 		if (_movementClock.getElapsedTime().asSeconds() > BIRD_FLY_DURATION)
-		{	// сбрасываю время полёта
+		{	// СЃР±СЂР°СЃС‹РІР°СЋ РІСЂРµРјВ¤ РїРѕР»Р„С‚Р°
 			_movementClock.restart();
-			_birdState = BIRD_TWO_FALLING; // состояние - птица падает
+			_birdState = BIRD_TWO_FALLING; // СЃРѕСЃС‚РѕВ¤РЅРёРµ - РїС‚РёС†Р° РїР°РґР°РµС‚
 		}
 	}
 
 	void frameBird::Tap()
-	{	// обработка нажатий
+	{	// РѕР±СЂР°Р±РѕС‚РєР° РЅР°Р¶Р°С‚РёР№
 		_movementClock.restart();
-		_birdState = BIRD_THREE_FLYING; // в процессе полёта
+		_birdState = BIRD_THREE_FLYING; // РІ РїСЂРѕС†РµСЃСЃРµ РїРѕР»Р„С‚Р°
 	}
 
 	const sf::Sprite &frameBird::GetSprite() const  
