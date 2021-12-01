@@ -1,17 +1,18 @@
 #pragma once
-#include <SFML/Graphics.hpp> // графика
-#include "State.hpp" // состояние игры
-#include <SFML/Audio.hpp> // звуки
-#include "GameLoop.hpp" // игра
-#include "BlockPipe.hpp" // птица
-#include "LandGame.hpp" // земля
-#include "AnimationBird.hpp" // анимация птицы
-#include "AllCollisions.hpp" // столкновения
-#include "GlossFlashSpeed.hpp" // вспышка
-#include "DisplayPlayerScore.hpp" // вывод результата
+
+#include <SFML/Graphics.hpp> // РіСЂР°С„РёРєР°
+#include "State.hpp" // СЃРѕСЃС‚РѕСЏРЅРёРµ РёРіСЂС‹
+#include <SFML/Audio.hpp> // Р·РІСѓРєРё
+#include "GameLoop.hpp" // РёРіСЂР°
+#include "BlockPipe.hpp" // РїС‚РёС†Р°
+#include "LandGame.hpp" // Р·РµРјР»СЏ
+#include "AnimationBird.hpp" // Р°РЅРёРјР°С†РёСЏ РїС‚РёС†С‹
+#include "AllCollisions.hpp" // СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
+#include "GlossFlashSpeed.hpp" // РІСЃРїС‹С€РєР°
+#include "DisplayPlayerScore.hpp" // РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 
 namespace SoundSonar
-{	// игровой статус
+{	// РёРіСЂРѕРІРѕР№ СЃС‚Р°С‚СѓСЃ
 	class StatusGame : public State
 	{
 	public:
@@ -27,23 +28,23 @@ namespace SoundSonar
 
 	private:
 		GameBirdDataRef _data;
-		// фон окна
+		// С„РѕРЅ РѕРєРЅР°
 		sf::Sprite _background;
-		// препятствия
+		// РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
 		BlockPipe *blockPipe;
-		// игровая поверхность - земля
+		// РёРіСЂРѕРІР°СЏ РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ - Р·РµРјР»СЏ
 		GameLand *gameLand;
-		// птичка
+		// РїС‚РёС‡РєР°
 		frameBird *fBird;
-		// красная вспышка при столкновении
+		// РєСЂР°СЃРЅР°СЏ РІСЃРїС‹С€РєР° РїСЂРё СЃС‚РѕР»РєРЅРѕРІРµРЅРёРё
 		GlossFlashSpeed* glossFlashSpeed;
-		// текущий результат на окне
+		// С‚РµРєСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚ РЅР° РѕРєРЅРµ
 		DisplayPlayerScore* displayPlayerScore;
-		// столкновения
+		// СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
 		AllCollisions allCollisions;
-		// для времени появления нового препятствия
+		// РґР»СЏ РІСЂРµРјРµРЅРё РїРѕСЏРІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РїСЂРµРїСЏС‚СЃС‚РІРёСЏ
 		sf::Clock clock;
-		// звуки в игре
+		// Р·РІСѓРєРё РІ РёРіСЂРµ
 		sf::SoundBuffer _hitWavBuffer;
 		sf::SoundBuffer _completeWavBuffer;
 		sf::SoundBuffer _pointWavBuffer;
@@ -52,9 +53,9 @@ namespace SoundSonar
 		sf::Sound _completeWav;
 		sf::Sound _pointWav;
 		sf::Sound _wingWav;
-		// переменная статуса
+		// РїРµСЂРµРјРµРЅРЅР°СЏ СЃС‚Р°С‚СѓСЃР°
 		int _gameState;
-		// переменная для подсчета результата
+		// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїРѕРґСЃС‡РµС‚Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°
 		int _score;
 	};
 }
