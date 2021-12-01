@@ -2,24 +2,24 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
-// для загрузки фона и шрифта
+// РґР»СЏ Р·Р°РіСЂСѓР·РєРё С„РѕРЅР° Рё С€СЂРёС„С‚Р°
 namespace SoundSonar
 {
 	class AssetsControl
 	{
 	public:
-		AssetsControl() {} // конструктор
-		~AssetsControl() {} // деструктор
-		// метод для загрузки рисунка (имя: ресурса-файла)
+		AssetsControl() {} // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+		~AssetsControl() {} // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+		// РјРµС‚РѕРґ РґР»СЏ Р·Р°РіСЂСѓР·РєРё СЂРёСЃСѓРЅРєР° (РёРјСЏ: СЂРµСЃСѓСЂСЃР°-С„Р°Р№Р»Р°)
 		void LoadTextureImage(std::string namePNG, std::string fileName);
-		// получаю имя файла для текстуры
+		// РїРѕР»СѓС‡Р°СЋ РёРјСЏ С„Р°Р№Р»Р° РґР»СЏ С‚РµРєСЃС‚СѓСЂС‹
 		sf::Texture &GetTexture(std::string namePNG);
-		// метод для загрузки шрифта (имя: ресурса-файла)
+		// РјРµС‚РѕРґ РґР»СЏ Р·Р°РіСЂСѓР·РєРё С€СЂРёС„С‚Р° (РёРјСЏ: СЂРµСЃСѓСЂСЃР°-С„Р°Р№Р»Р°)
 		void LoadSomeFont(std::string name, std::string fileName);
-		// получаю имя шрифта
+		// РїРѕР»СѓС‡Р°СЋ РёРјСЏ С€СЂРёС„С‚Р°
 		sf::Font &GetFont(std::string name);
 
-	private:	// для интерфейса
+	private:	// РґР»СЏ РёРЅС‚РµСЂС„РµР№СЃР°
 		std::map<std::string, sf::Texture> _textures;
 		std::map<std::string, sf::Font> _fonts;
 
