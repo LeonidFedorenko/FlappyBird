@@ -5,25 +5,25 @@
 namespace SoundSonar
 {
 	GameLand::GameLand(GameBirdDataRef data) : _data(data)
-	{	// для получения рисунка земли
+	{	// РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЂРёСЃСѓРЅРєР° Р·РµРјР»Рё
 		sf::Sprite sprite(_data->assetcontrols.GetTexture("LandGame"));
 		sf::Sprite sprite2(_data->assetcontrols.GetTexture("LandGame"));
-		// для позиции в окне
+		// РґР»СЏ РїРѕР·РёС†РёРё РІ РѕРєРЅРµ
 		sprite.setPosition(0, _data->window.getSize().y - sprite.getGlobalBounds().height);
-		// позиция за первым рисунком
+		// РїРѕР·РёС†РёСЏ Р·Р° РїРµСЂРІС‹Рј СЂРёСЃСѓРЅРєРѕРј
 		sprite2.setPosition(sprite.getGlobalBounds().width, _data->window.getSize().y - sprite.getGlobalBounds().height);
-		// чередую спрайты
+		// С‡РµСЂРµРґСѓСЋ СЃРїСЂР°Р№С‚С‹
 		_gameLandSprites.push_back(sprite);
 		_gameLandSprites.push_back(sprite2);
 	}
 
 	void GameLand::MoveGameLand(float dt)
-	{	// для движения картинки земли
+	{	// РґР»СЏ РґРІРёР¶РµРЅРёСЏ РєР°СЂС‚РёРЅРєРё Р·РµРјР»Рё
 		for (unsigned short int i = 0; i < _gameLandSprites.size(); i++)
 		{
 			float movement = PIPE_MOVEMENT_SPEED * dt;
 			_gameLandSprites.at(i).move( -movement, 0.0f );
-			// проверка движения рисунка (по ширине рисунка)
+			// РїСЂРѕРІРµСЂРєР° РґРІРёР¶РµРЅРёСЏ СЂРёСЃСѓРЅРєР° (РїРѕ С€РёСЂРёРЅРµ СЂРёСЃСѓРЅРєР°)
 			if (_gameLandSprites.at(i).getPosition().x < 0 - _gameLandSprites.at(i).getGlobalBounds().width)
 			{
 				sf::Vector2f position(_data->window.getSize().x, _gameLandSprites.at(i).getPosition().y);
@@ -33,16 +33,16 @@ namespace SoundSonar
 	}
 
 	void GameLand::DrawingGameLand()
-	{	// рисую поверхность (рисунок поля из ресурсов)
+	{	// СЂРёСЃСѓСЋ РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ (СЂРёСЃСѓРЅРѕРє РїРѕР»СЏ РёР· СЂРµСЃСѓСЂСЃРѕРІ)
 		for (unsigned short int i = 0; i < _gameLandSprites.size(); i++)
 		{
 			_data->window.draw(_gameLandSprites.at(i));
 		}
 	}
 
-	// для столкновений
+	// РґР»СЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№
 	const std::vector<sf::Sprite> &GameLand::GetSprites() const
-	{	// с поверхностью в игре
+	{	// СЃ РїРѕРІРµСЂС…РЅРѕСЃС‚СЊСЋ РІ РёРіСЂРµ
 		return _gameLandSprites;
 	}
 }
