@@ -1,29 +1,29 @@
 #include <SFML/Graphics.hpp>
-#include "AssetsÑontrol.hpp"
+#include "AssetsÐ¡ontrol.hpp"
 
 namespace SoundSonar
 {
 	void AssetsControl::LoadTextureImage(std::string name, std::string fileName)
-	{	// äëÿ çàãðóçêè òåêñòóðû
+	{	// Ð´Ð»Ñ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ‚ÐµÐºÑÑ‚ÑƒÑ€Ñ‹
 		sf::Texture texPNG;
 
 		if (texPNG.loadFromFile(fileName))
-		{	// ïðîâåðêà çàãðóçêè ðåñóðñà
+		{	// Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ€ÐµÑÑƒÑ€ÑÐ°
 			this->_textures[name] = texPNG;
 		}
 	}
 
 	sf::Texture &AssetsControl::GetTexture(std::string name)
-	{	// ïîëó÷àþ òåêñòóðó ïî èìåíè 
+	{	// Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÑŽ Ñ‚ÐµÐºÑÑ‚ÑƒÑ€Ñƒ Ð¿Ð¾ Ð¸Ð¼ÐµÐ½Ð¸ 
 		return this->_textures.at(name);
 	}
 
 	void AssetsControl::LoadSomeFont(std::string name, std::string fileName)
-	{	// äëÿ çàãðóçêè òåêñòóðû (øðèôòà)
+	{	// Ð´Ð»Ñ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ‚ÐµÐºÑÑ‚ÑƒÑ€Ñ‹ (ÑˆÑ€Ð¸Ñ„Ñ‚Ð°)
 		sf::Font font;
 
 		if (font.loadFromFile(fileName))
-		{	// ïðîâåðêà çàãðóçêè ðåñóðñà
+		{	// Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ€ÐµÑÑƒÑ€ÑÐ°
 			this->_fonts[name] = font;
 		}
 	}
