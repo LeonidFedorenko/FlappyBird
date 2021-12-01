@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-// реакция на левую кнопку мыши
+// СЂРµР°РєС†РёСЏ РЅР° Р»РµРІСѓСЋ РєРЅРѕРїРєСѓ РјС‹С€Рё
 namespace SoundSonar
 {
 	class ManagerInput
@@ -9,9 +9,9 @@ namespace SoundSonar
 	public:
 		ManagerInput() {}
 		~ManagerInput() {}
-		// для регистрации нажатий кнопок мыши
+		// РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РЅР°Р¶Р°С‚РёР№ РєРЅРѕРїРѕРє РјС‹С€Рё
 		bool IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window);
-		// получаю позицию мыши-курсора (относительно окна)
+		// РїРѕР»СѓС‡Р°СЋ РїРѕР·РёС†РёСЋ РјС‹С€Рё-РєСѓСЂСЃРѕСЂР° (РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РѕРєРЅР°)
 		sf::Vector2i GetMousePosition(sf::RenderWindow &window);
 	};
 }
